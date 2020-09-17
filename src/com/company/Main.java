@@ -1,5 +1,5 @@
 package com.company;
-
+//E5.19
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.lang.*;
@@ -33,7 +33,7 @@ public class Main {
     public static class mydeck{//Mydeck class contains an arraylist which uses mycard class as its datatype
         ArrayList<mycard> mycardArrayList = new ArrayList<mycard>(0);
 
-        public mydeck(){//default constructor to create the arraylist
+        public mydeck(){//default constructor to create the arraylist with number only
             mycardArrayList.add(0, new mycard("A", "Ace"));
             mycardArrayList.add(1, new mycard("2", "Two"));
             mycardArrayList.add(2, new mycard("3", "Three"));
@@ -47,10 +47,13 @@ public class Main {
             mycardArrayList.add(10, new mycard("J", "Jack"));
             mycardArrayList.add(11, new mycard("Q", "Queen"));
             mycardArrayList.add(12, new mycard("K", "King"));
-            mycardArrayList.add(13, new mycard("D", "Diamond"));
-            mycardArrayList.add(14, new mycard("H", "Heart"));
-            mycardArrayList.add(15, new mycard("S", "Spades"));
-            mycardArrayList.add(16, new mycard("C", "Club"));
+        }
+
+        public mydeck(int num){//this constructor is to create types
+            mycardArrayList.add(0, new mycard("D", "Diamond"));
+            mycardArrayList.add(1, new mycard("H", "Heart"));
+            mycardArrayList.add(2, new mycard("S", "Spades"));
+            mycardArrayList.add(3, new mycard("C", "Club"));
         }
 
         public String find(String input){
@@ -69,7 +72,8 @@ public class Main {
 
     public static void main(String[] args) {
 	// write your code here
-        mydeck myobj = new mydeck();
+        mydeck myobj = new mydeck();// This is the object contains all the cards value
+        mydeck mytype = new mydeck(1);//This is the object contains all the card types
         Scanner inputObj = new Scanner(System.in);
         System.out.println("Please input the message you would like to translate, press E to quit");
         String i = "0";
@@ -80,12 +84,12 @@ public class Main {
             if(i.charAt(1) == '0'){//when the first input is ten
                 first = i.substring(0,2);
                 second = i.substring(2,3);
-                System.out.print(myobj.find(first.toUpperCase()) + " of " + myobj.find(second.toUpperCase()) + "\n");
+                System.out.print(myobj.find(first.toUpperCase()) + " of " + mytype.find(second.toUpperCase()) + "\n");
             }
             else{//other cases
                 first = i.substring(0,1);
                 second = i.substring(1,2);
-                System.out.print(myobj.find(first.toUpperCase()) + " of " + myobj.find(second.toUpperCase()) + "\n");
+                System.out.print(myobj.find(first.toUpperCase()) + " of " + mytype.find(second.toUpperCase()) + "\n");
             }
             System.out.println("Please input the next message or press E to exit");
             i = inputObj.nextLine();
